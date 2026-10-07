@@ -1,3 +1,84 @@
-body {
+/* colours will change later to look nicer*/
+* {
     box-sizing: border-box;
 }
+
+:root {
+    --navy: #2b2d42;
+    --darkNavy: #1b1c2e
+}
+
+body {
+    margin: 0;
+    background-color: var(--navy); /* to change */
+}
+
+.tabBar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: var(--darkNavy); /* to change */
+    color: white;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    margin-right: auto;
+}
+
+button, select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #ffd166; /* to change */
+    cursor: pointer;
+}
+
+#board {
+    position: relative;
+    height: calc(100vh - 60px);
+    overflow: auto;
+}
+
+.note {
+    position: absolute;
+    width: 200px;
+    min-height: 180px;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-header {
+    display: flex;
+    justify-self: space-between;
+    cursor: grab;
+    font-size: 1rem;
+    padding-bottom: 6px;
+}
+
+.note textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 1rem;
+}
+
+.note-header button {
+    padding: 0.4px;
+    font-size: 1rem;
+}
+
+.note.ideas {background-color: pink;}
+.note.journal {background-color: green;}
+.note.due {background-color: blue;}
+.note.goals {background-color: purple;}
