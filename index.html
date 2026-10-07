@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky-Notes Journal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    <header class="tabBar">
+        <h1>Sticky Notes</h1>
+
+        <select name="categories" id="categories">
+            <option value="ideas">Ideas</option>
+            <option value="journal">Journal</option>
+            <option value="due">Due</option>
+            <option value="goals">Goals</option>
+        </select>
+        
+        <button id="addBtn">+ New note</button>
+
+        <select name="filter" id="filer">
+            <option value="all">Show all</option>
+            <option value="ideas">Ideas</option>
+            <option value="due">Due</option>
+            <option value="goals">Goals</option>
+        </select>
+    </header>
+
+    <main id="board"></main>
+</body>
+</html>
