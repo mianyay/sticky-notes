@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky-Notes Journal</title>
+    <title>Sticky-Notes</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
 </head>
@@ -20,7 +20,7 @@
         
         <button id="addBtn">+ New note</button>
 
-        <select name="filter" id="fitler">
+        <select name="filter" id="filter">
             <option value="all">Show all</option>
             <option value="ideas">Ideas</option>
             <option value="due">Due</option>
@@ -28,15 +28,6 @@
         </select>
     </header>
 
-    <main id="board">
-        <!-- note test as it will be done on js -->
-        <div class="note-ideas">
-            <div class="note-header">
-                <span>Ideas</span>
-                <button>X</button>
-                <textarea placeholder="Write..."></textarea>
-            </div>
-        </div>
-    </main>
+    <main id="board"></main>
 </body>
 </html>
