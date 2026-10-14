@@ -58,7 +58,7 @@ button {
 
 .note-header {
     display: flex;
-    justify-self: space-between;
+    justify-content: space-between;
     cursor: grab;
     font-size: 1rem;
     padding-bottom: 6px;
@@ -76,6 +76,7 @@ button {
 .note-header button {
     padding: 0.4px;
     font-size: 1rem;
+    background: none;
 }
 
 .note.ideas {background-color: pink;}

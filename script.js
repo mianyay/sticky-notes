@@ -36,8 +36,8 @@ function createNote(note) {
     <textarea placeholder="Write..."></textarea>
     `;
     
-    const textarea = element.querySelector("textarea")
-    .value = note.text;
+    const textarea = element.querySelector("textarea");
+    textarea.value = note.text;
 
     textarea.addEventListener("input", function () {
         note.text = textarea.value;
