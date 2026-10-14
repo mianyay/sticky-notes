@@ -1,16 +1,15 @@
-/* colours will change later to look nicer*/
 * {
     box-sizing: border-box;
 }
 
 :root {
-    --navy: #2b2d42;
-    --darkNavy: #1b1c2e
+    --navy: #243443;
+    --darkNavy: #18232e;
 }
 
 body {
     margin: 0;
-    background-color: var(--navy); /* to change */
+    background-color: var(--navy); 
 }
 
 .tabBar {
@@ -18,7 +17,7 @@ body {
     gap: 12px;
     align-items: center;
     padding: 12px 20px;
-    background-color: var(--darkNavy); /* to change */
+    background-color: var(--darkNavy);
     color: white;
 }
 
@@ -36,7 +35,7 @@ button, select {
 }
 
 button {
-    background-color: #ffd166; /* to change */
+    background-color: #763a35; 
     cursor: pointer;
 }
 
@@ -54,6 +53,7 @@ button {
     border-radius: 6px;
     display: flex;
     flex-direction: column;
+    box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.35);
 }
 
 .note-header {
@@ -79,7 +79,7 @@ button {
     background: none;
 }
 
-.note.ideas {background-color: pink;}
-.note.journal {background-color: green;}
-.note.due {background-color: blue;}
-.note.goals {background-color: purple;}
+.note.ideas {background-color: #6e3745;}
+.note.journal {background-color: #cd7e4e;}
+.note.due {background-color: #e66948;}
+.note.goals {background-color: #eabd83;}

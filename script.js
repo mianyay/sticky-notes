@@ -1,4 +1,5 @@
 let notes = [];
+let toplayerZ = 0;
 const categories = document.getElementById("categories")
 const filter = document.getElementById("filter")
 const addBtn = document.getElementById("addBtn")
@@ -19,6 +20,7 @@ function load() {
     const saved = localStorage.getItem("stickyNotes");
     if (saved) {
         notes = JSON.parse(saved);
+        toplayerZ = Math.max(0, ...notes.map(function (n) { return n.z || 0; }))
     }
 }
 
@@ -27,6 +29,7 @@ function createNote(note) {
     element.className = "note " + note.category;
     element.style.left = note.x + "px";
     element.style.top = note.y + "px";
+    element.style.zIndex = note.z || 0;
 
     element.innerHTML = `
     <div class="note-header">
@@ -52,6 +55,7 @@ function createNote(note) {
         render()
     });
     drag(element, element.querySelector(".note-header"), note)
+    toFront(element, note)
     return element;
 };
 
@@ -75,6 +79,7 @@ addBtn.addEventListener("click", function () {
         category: categories.value,
         x: 40 + Math.random() * 300,
         y: 40 + Math.random() * 200,
+        z: ++toplayerZ,
     });
     savetolocalstorage();
     render();
@@ -84,6 +89,14 @@ filter.addEventListener("change", render);
 
 load();
 render();
+
+function toFront(element, note) {
+    element.addEventListener("pointerdown", function () {
+        note.z = ++toplayerZ
+        element.style.zIndex = note.z
+        savetolocalstorage()
+    });
+};
 
 function drag(element, handle, note) {
     handle.addEventListener("pointerdown", function(e) {
