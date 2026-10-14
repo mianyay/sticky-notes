@@ -24,6 +24,18 @@ function load() {
     }
 }
 
+function formatDate(timestamp) {
+    if (!timestamp) return "";
+
+    return new Date(timestamp).toLocaleString(undefined, {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+    });
+}
+
 function createNote(note) {
     const element = document.createElement("div")
     element.className = "note " + note.category;
@@ -37,6 +49,7 @@ function createNote(note) {
         <button class="delete">X</button>
     </div>
     <textarea placeholder="Write..."></textarea>
+    <div class = "note-date">${formatDate(note.createdwhen)}</div>
     `;
     
     const textarea = element.querySelector("textarea");
@@ -80,6 +93,7 @@ addBtn.addEventListener("click", function () {
         x: 40 + Math.random() * 300,
         y: 40 + Math.random() * 200,
         z: ++toplayerZ,
+        createdwhen: Date.now()
     });
     savetolocalstorage();
     render();

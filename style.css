@@ -13,6 +13,10 @@ body {
     background-color: var(--navy); 
 }
 
+.categories {
+    font-weight: bold;
+}
+
 .tabBar {
     display: flex;
     gap: 12px;
@@ -78,6 +82,12 @@ button {
     padding: 0.4px;
     font-size: 1rem;
     background: none;
+}
+
+.note-date {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    padding-top: 6px;
 }
 
 .note.ideas {background-color: #6e3745;}
