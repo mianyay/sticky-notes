@@ -11,6 +11,7 @@
 body {
     margin: 0;
     background-color: var(--navy); 
+     cursor: url("images/pumpkin.png") 16 16, auto;
 }
 
 
@@ -23,10 +24,26 @@ body {
     color: white;
 }
 
+@keyframes flicker {
+    0%, 28%, 67%, 100% {
+        opacity: 1;
+        text-shadow:
+            0 0 6px #ff7518,
+            0 0 16px #ff7518,
+            0 0 32px #b34700;
+    }
+
+    33%, 49%, 76% {
+        opacity: 0.4;
+        text-shadow: none;
+    }
+}
+
 h1 {
     margin: 0;
     font-size: 1.6rem;
     margin-right: auto;
+    animation: flicker 6s infinite
 }
 
 button, select {
@@ -36,9 +53,15 @@ button, select {
     font-size: 1rem;
 }
 
+button:hover {
+    box-shadow: 0 0 14px #763a35;
+    transform: scale(1.05)
+}
+
 button {
     background-color: #763a35; 
     cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
 }
 
 #board {
@@ -47,6 +70,21 @@ button {
     overflow: auto;
 }
 
+.note.ideas:hover {
+    box-shadow: 0 0 18px #6e3745;
+}
+
+.note.journal:hover {
+    box-shadow: 0 0 18px #cd7e4e;
+}
+
+.note.due:hover {
+    box-shadow: 0 0 18px #e66948;
+}
+
+.note.goals:hover {
+    box-shadow: 0 0 18px #eabd83;
+}
 .note {
     position: absolute;
     width: 200px;
@@ -58,6 +96,7 @@ button {
     box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.35);
     resize: both;
     overflow: auto;
+    transition: box-shadow 0.3s;
 }
 
 .note-header {
