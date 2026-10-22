@@ -13,9 +13,6 @@ body {
     background-color: var(--navy); 
 }
 
-.categories {
-    font-weight: bold;
-}
 
 .tabBar {
     display: flex;
@@ -28,7 +25,7 @@ body {
 
 h1 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     margin-right: auto;
 }
 
@@ -59,13 +56,15 @@ button {
     display: flex;
     flex-direction: column;
     box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.35);
+    resize: both;
+    overflow: auto;
 }
 
 .note-header {
     display: flex;
     justify-content: space-between;
     cursor: grab;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding-bottom: 6px;
 }
 
