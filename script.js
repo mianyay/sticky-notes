@@ -41,6 +41,8 @@ function createNote(note) {
     element.className = "note " + note.category;
     element.style.left = note.x + "px";
     element.style.top = note.y + "px";
+    element.style.width = (note.w || 200) + "px";
+    element.style.height = (note.h || 180) + "px";
     element.style.zIndex = note.z || 0;
 
     element.innerHTML = `
@@ -69,6 +71,18 @@ function createNote(note) {
     });
     drag(element, element.querySelector(".note-header"), note)
     toFront(element, note)
+
+    const sizing = new ResizeObserver(function () {
+        const w = element.offsetWidth;
+        const h = element.offsetHeight;
+
+        if (w === note.w && h === note.h) return;
+
+        note.w = w
+        note.h = h
+        savetolocalstorage()
+    })
+    sizing.observe(element)
     return element;
 };
 
@@ -93,7 +107,9 @@ addBtn.addEventListener("click", function () {
         x: 40 + Math.random() * 300,
         y: 40 + Math.random() * 200,
         z: ++toplayerZ,
-        createdwhen: Date.now()
+        createdwhen: Date.now(),
+        w: 200,
+        h: 180,
     });
     savetolocalstorage();
     render();
