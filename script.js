@@ -153,3 +153,32 @@ function drag(element, handle, note) {
         handle.addEventListener("pointerup", up)
     });
 }
+
+function spawnBat() {
+    const bat = document.createElement("div")
+    bat.className = "bat";
+    bat.innerHTML = '<span><img src="images/bat.png" alt="bats" draggable="false"></span>';
+    bat.style.top = Math.random() * 60 + "vh"
+    bat.style.width = 40 + Math.random() * 60 + "px"
+    bat.style.setProperty("--duration", 4 + Math.random() * 5 + "s")
+    bat.style.setProperty("--wave", 20 + Math.random() * 60 + "px")
+
+    bat.addEventListener("animationend", function () {
+        bat.remove()
+    })
+
+    document.body.appendChild(bat)
+}
+
+function releaseBats() {
+    if (!document.hidden) {
+        spawnBat()
+    }
+    setTimeout(releaseBats, 1000 + Math.random() * 7000)
+}
+
+const motionReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!motionReduce) {
+    setTimeout(releaseBats, 2000)
+}
