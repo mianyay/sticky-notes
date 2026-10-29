@@ -133,7 +133,7 @@ function createNote(note) {
             imgElement.src = note.image;
             imgBox.style.height = (note.imgHeight || 140) + "px";
             imgBox.hidden = false;
-            imgBtn.textContent = "X IMG"
+            imgBtn.textContent = "- IMG"
             imgBtn.title = "Remove image?";
         } else {
             imgBox.hidden = true;
