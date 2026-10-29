@@ -84,7 +84,9 @@ function createNote(note) {
             <button class="delete">X</button>
         </div>
     </div>
-    <img class="note-img" title="Click to remove" hidden>
+    <div class="img-box" hidden>
+        <img class="note-img" alt="" draggable="false">
+    </div>
     <textarea placeholder="write something..."></textarea>
     <div class = "note-date">${formatDate(note.createdwhen)}</div>
     <input type="file" accept="image/*" class="file-input" hidden>
@@ -123,20 +125,47 @@ function createNote(note) {
     //images
     const fileInput = element.querySelector(".file-input");
     const imgElement = element.querySelector(".note-img");
+    const imgBox = element.querySelector(".img-box")
+    const imgBtn = element.querySelector(".add-img")
 
     function showImage() {
         if (note.image) {
             imgElement.src = note.image;
-            imgElement.hidden = false;
+            imgBox.style.height = (note.imgHeight || 140) + "px";
+            imgBox.hidden = false;
+            imgBtn.textContent = "X IMG"
+            imgBtn.title = "Remove image?";
         } else {
-            imgElement.hidden = true;
+            imgBox.hidden = true;
+            imgBtn.textContent = "+ IMG";
+            imgBtn.title = "Add Image?"
         }
     }
     showImage()
 
-    element.querySelector(".add-img").addEventListener("click", function () {
-        fileInput.click()
+    imgBtn.addEventListener("click", function () {
+        if (note.image) {
+            if (confirm("Remove image?")) {
+                note.image = null;
+                note.imgHeight = null
+                showImage()
+                savetolocalstorage()
+            }
+        } else {
+            fileInput.click()
+        }
     });
+
+    const imgSizing = new ResizeObserver(function () {
+        if (imgBox.hidden) return;
+
+        const h = imgBox.offsetHeight;
+        if (h === 0 || h === note.imgHeight) return;
+
+        note.imgHeight = h;
+        savetolocalstorage
+    });
+    imgSizing.observe(imgBox)
 
     fileInput.addEventListener("change", function () {
         const file = fileInput.files[0];
