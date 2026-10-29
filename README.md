@@ -2,7 +2,7 @@
 A website that features sweets that are interactive and clickable! It is made using HTML and CSS.
 
 ## Live demo
-https://mianyay.github.io/sweet-shop-website/
+https://mianyay.github.io/sticky-notes/
 
 ## About
 
