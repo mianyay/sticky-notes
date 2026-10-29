@@ -1,5 +1,5 @@
 # Haunted Sticky Notes
-A website that features sweets that are interactive and clickable! It is made using HTML and CSS.
+A website that allow users to create sticky notes based on the themes: 
 
 ## Live demo
 https://mianyay.github.io/sticky-notes/
