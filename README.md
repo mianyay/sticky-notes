@@ -1,18 +1,20 @@
 # Haunted Sticky Notes
-A website that allow users to create sticky notes based on the themes: 
+A website that lets users create sticky notes based on the themes: Costume Ideas, Journal Scary Stories, Due, and Candy Goals. 
 
 ## Live demo
 https://mianyay.github.io/sticky-notes/
 
 ## About
-
+This is a website made using CSS, HTML, and JavaScript. A bit of AI was used to help write the JavaScript. The sticky notes can be created using the + New Note button, and users can choose what type of sticky note they would like from the left-side filter list. On the right, there is an option that determines which category will be shown on the page. Users can write information and upload images of their choice. All the sticky notes are resizable and colour-coded.  
 
 ## Features
-- Clickable desserts (majority with links)
-- Floating animation
-- Wiggle animation when hovering
-- Enlarge animation when hovering
-- Tilt shake animation on parfait when clicked
+- create + draggable + resizable + deleteable sticky notes
+- 4 categories
+- date stamps
+- attach image
+- local storage saving
+- Halloween-themed (glowing, flickering, spiders, bats, pumpkin)
+  
 
 ## How to run
 Download the files and open index.html in a browser.
