@@ -13,7 +13,11 @@ const labels = {
 }
 
 function savetolocalstorage() {
+    try {
     localStorage.setItem("stickyNotes", JSON.stringify(notes))
+    } catch (err) {
+        alert("Storage can only hold up 5MB. Please remove some images before trying again.")
+    }
 }
 
 function load() {
@@ -36,6 +40,33 @@ function formatDate(timestamp) {
     });
 }
 
+// insert images 
+function imagereader(file, callback) {
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const img = new Image()
+
+        img.onload = function () {
+            const maxSize = 500;
+            const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+
+            const canvas = document.createElement("canvas")
+            canvas.width = Math.round(img.width * scale);
+            canvas.height = Math.round(img.height * scale);
+
+            const context = canvas.getContext("2d");
+            context.fillStyle = "#ffffff"
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            callback(canvas.toDataURL("image/jpeg", 0.8))
+        };
+        img.src = reader.result;
+    }
+    reader.readAsDataURL(file)
+}
+
 function createNote(note) {
     const element = document.createElement("div")
     element.className = "note " + note.category;
@@ -48,10 +79,15 @@ function createNote(note) {
     element.innerHTML = `
     <div class="note-header">
         <span>${labels[note.category]}</span>
-        <button class="delete">X</button>
+        <div class="note-actions">
+            <button class="add-img" title="Add your image">+ IMG</button>
+            <button class="delete">X</button>
+        </div>
     </div>
-    <textarea placeholder="Write..."></textarea>
+    <img class="note-img" title="Click to remove" hidden>
+    <textarea placeholder="write something..."></textarea>
     <div class = "note-date">${formatDate(note.createdwhen)}</div>
+    <input type="file" accept="image/*" class="file-input" hidden>
     `;
     
     const textarea = element.querySelector("textarea");
@@ -83,6 +119,48 @@ function createNote(note) {
         savetolocalstorage()
     })
     sizing.observe(element)
+
+    //images
+    const fileInput = element.querySelector(".file-input");
+    const imgElement = element.querySelector(".note-img");
+
+    function showImage() {
+        if (note.image) {
+            imgElement.src = note.image;
+            imgElement.hidden = false;
+        } else {
+            imgElement.hidden = true;
+        }
+    }
+    showImage()
+
+    element.querySelector(".add-img").addEventListener("click", function () {
+        fileInput.click()
+    });
+
+    fileInput.addEventListener("change", function () {
+        const file = fileInput.files[0];
+        fileInput.value = "";
+
+        if (!file || !file.type.startsWith("image/")) return;
+
+        imagereader(file, function (dataUrl) {
+            note.image = dataUrl
+            note.h = Math.max(note.h || 180, 300);
+            element.style.height = note.h + "px";
+            showImage()
+            savetolocalstorage()
+        });
+    });
+
+    imgElement.addEventListener("click", function () {
+        if (confirm("Remove image")) {
+            note.image = null;
+            showImage();
+            savetolocalstorage()
+        }
+    })
+
     return element;
 };
 

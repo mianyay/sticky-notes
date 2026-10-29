@@ -198,3 +198,23 @@ button {
     margin-top: var(--gap, 3px);
     image-rendering: pixelated;
 }
+
+.note-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.note-img {
+    display: block;
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.note-img[hidden] {
+    display: none;
+}
