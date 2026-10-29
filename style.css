@@ -55,7 +55,7 @@ button, select {
 }
 
 button:hover {
-    box-shadow: 0 0 14px #763a35;
+    box-shadow: 0 0 14px var(--match, #763a35);
     transform: scale(1.05)
 }
 
@@ -218,3 +218,13 @@ button {
 .note-img[hidden] {
     display: none;
 }
+
+#addBtn {
+    background-color: var(--match, #763a35);
+    transition: background-color, 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+#addBtn[data-category="ideas"] { --match: #6e3745; color: #18232e;}
+#addBtn[data-category="journal"] { --match: #cd7e4e; color: #18232e;}
+#addBtn[data-category="due"] { --match: #e66948; color: #18232e;}
+#addBtn[data-category="goals"] { --match: #eabd83; color: #18232e;}

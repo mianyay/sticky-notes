@@ -193,6 +193,14 @@ addBtn.addEventListener("click", function () {
     render();
 });
 
+// + New note colour change correpsonding to the chosen note
+function changeButtonColour() {
+    addBtn.dataset.category = categories.value;
+}
+
+categories.addEventListener("change", changeButtonColour);
+changeButtonColour()
+
 filter.addEventListener("change", render);
 
 load();
