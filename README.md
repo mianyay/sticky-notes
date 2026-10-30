@@ -5,7 +5,7 @@ A website that lets users create sticky notes based on the themes: Costume Ideas
 https://mianyay.github.io/sticky-notes/
 
 ## About
-This is a website made using CSS, HTML, and JavaScript. A bit of AI was used to help write the JavaScript. The sticky notes can be created using the + New Note button, and users can choose what type of sticky note they would like from the left-side filter list. On the right, there is an option that determines which category will be shown on the page. Users can write information and upload images of their choice. All the sticky notes are resizable and colour-coded.  
+This is a website made using CSS, HTML, and JavaScript. A bit of AI (mainly around debugging and learning new syntax, so around ~15%) was used to help write the JavaScript. The sticky notes can be created using the + New Note button, and users can choose what type of sticky note they would like from the left-side filter list. On the right, there is an option that determines which category will be shown on the page. Users can write information and upload images of their choice. All the sticky notes are resizable and colour-coded.  
 
 ## Features
 - create + draggable + resizable + deleteable sticky notes
